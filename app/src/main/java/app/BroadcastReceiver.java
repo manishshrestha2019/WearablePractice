@@ -19,7 +19,7 @@ public class BroadcastReceiver  extends android.content.BroadcastReceiver {
             if (noConnectivity){
                 Toast.makeText(context, "Disconnected", Toast.LENGTH_SHORT).show();
             }else{
-                Toast.makeText(context, "Connected12", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Connected", Toast.LENGTH_SHORT).show();
             }
         }
 
