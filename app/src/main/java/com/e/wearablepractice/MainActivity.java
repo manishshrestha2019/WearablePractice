@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import createchannel.CreateChannel;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnNotification,btnNotification1;
 
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         btnNotification=findViewById(R.id.btnNotification);
 
         notificationManagerCompat=NotificationManagerCompat.from(this);
+
+        CreateChannel channel=new CreateChannel(this);
+        channel.createChannel();
 
         btnNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,24 +43,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void DisplayNotification(){
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(MainActivity.this,"Channel1")
+       Notification notification=new NotificationCompat.Builder(this,CreateChannel.CHANNEL_1)
                 .setSmallIcon(R.drawable.ic_message_black_24dp)
                 .setContentTitle("Message")
                 .setContentText("Call Me When Free")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+               .build();
 
-        notificationManagerCompat.notify(1,builder.build());
+
+        notificationManagerCompat.notify(1, notification);
     }
-    private void DisplayNotification2(){
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(MainActivity.this,"Channel2")
+
+    private void DisplayNotification2() {
+        Notification notification = new NotificationCompat.Builder(this, CreateChannel.CHANNEL_2)
                 .setSmallIcon(R.drawable.ic_message_black_24dp)
                 .setContentTitle("Message")
-                .setContentText("This is Second Message")
+                .setContentText("Call Masdasdasdsae When Free")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setCategory(NotificationCompat.CATEGORY_MESSAGE);
+                .setCategory(NotificationCompat.CATEGORY_MESSAGE)
+                .build();
 
-        notificationManagerCompat.notify(2,builder.build());
+
+        notificationManagerCompat.notify(1, notification);
     }
 
 

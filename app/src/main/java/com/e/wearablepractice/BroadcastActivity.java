@@ -1,17 +1,17 @@
 package com.e.wearablepractice;
 
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import app.BroadcastReceiver;
+import app.BroadcastReceiverExample;
 
 public class BroadcastActivity extends AppCompatActivity {
 
 
-    BroadcastReceiver broadcastReceiver=new BroadcastReceiver();
+
+    BroadcastReceiverExample broadcastReceiverExample=new BroadcastReceiverExample(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,14 @@ public class BroadcastActivity extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
         IntentFilter intentFilter=new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        registerReceiver(broadcastReceiver,intentFilter);
+        registerReceiver(broadcastReceiverExample,intentFilter);
 
     }
     protected void onStop(){
         super.onStop();
 
-        unregisterReceiver(broadcastReceiver );
+        unregisterReceiver(broadcastReceiverExample );
     }
+
+
 }
